@@ -1,0 +1,208 @@
+$devMode: false;
+
+$breakpoints: (
+  s: 320px,
+  sm: 480px,
+  m: 768px,
+  l: 1024px,
+  x: 1366px,
+  xl: 1920px,
+);
+
+@mixin from($bp) {
+  @if (map-has-key($breakpoints, $bp)) {
+    @media screen and (min-width: map-get($breakpoints, $bp)) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $bp) {
+      @content;
+    }
+  }
+}
+@mixin debug($color) {
+  border: 1px solid $color;
+}
+
+:root {
+  --just-black: #000000;
+  --soft-blue: #5928e5;
+  --soft-pink: #fed9da;
+  --just-white: #ffffff;
+  --font-cantarell: 'Cantarell', sans-serif;
+  --font-exo: 'Exo', sans-serif;
+}
+
+body {
+  margin: 0;
+  margin-block-start: 100px;
+  font-family: var(--font-cantarell);
+  background-color: var(--soft-pink);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+h1,
+h1,
+h3 {
+  font-family: var(--font-exo);
+}
+.wrapper {
+  max-inline-size: 1200px;
+  margin: auto;
+}
+.overlay {
+  position: absolute;
+  inline-size: 100%;
+  inset-block-start: 0;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  display: none;
+  background-color: hsla(0, 0%, 0%, 0.376);
+  &.active {
+    display: block;
+  }
+  @include from(l) {
+    display: none;
+  }
+}
+
+.header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  background-color: var(--soft-pink);
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: 16px;
+  padding-block: 16px;
+  @include from(l) {
+    .btn {
+      display: flex;
+      justify-content: space-between;
+      inline-size: 229px;
+    }
+  }
+}
+
+.navigation {
+  &__list {
+    position: fixed;
+    inset-inline-start: 0;
+    inset-inline-end: 20%;
+    inset-block-start: 12.2%;
+    inset-block-end: 0;
+    padding-inline-start: 24px;
+    transform: translatex(-100%);
+    background-color: var(--just-white);
+  }
+  &__item {
+    margin-block-end: 56px;
+    padding-block-start: 28px;
+  }
+  &__item a {
+    color: var(--just-black);
+    font-family: var(--font-exo);
+    font-size: 24px;
+    font-weight: 700;
+    opacity: 0.5;
+    text-transform: capitalize;
+  }
+  &__item a:hover,
+  &__item a:active {
+    color: var(--just-black);
+    opacity: 1;
+  }
+  &.active &__list {
+    transform: translateX(0);
+  }
+  @include from(m) {
+    &__list {
+      position: initial;
+      display: flex;
+      transform: translateX(0);
+      background-color: transparent;
+    }
+    &__item {
+      margin: 0;
+      padding-block: 0;
+      padding-inline: 20px;
+    }
+    &__item a {
+      font-size: 16px;
+      color: var(--soft-blue);
+    }
+  }
+}
+.icon-menu {
+  box-sizing: border-box;
+  position: relative;
+  inline-size: 34px;
+  block-size: 34px;
+  @include from(m) {
+    display: none;
+  }
+}
+.line {
+  position: absolute;
+  inline-size: 100%;
+  block-size: 3px;
+  top: 50%;
+  transform: translatey(-50%);
+  background-color: var(--soft-blue);
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    inline-size: 100%;
+    block-size: 3px;
+    background-color: var(--soft-blue);
+    inset-block-start: -250%;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    inline-size: 100%;
+    block-size: 3px;
+    background-color: var(--soft-blue);
+    inset-block-end: -250%;
+  }
+}
+
+/* Buttons */
+.btn {
+  padding-inline: 24px;
+  padding-block: 12px;
+  border: none;
+  font-family: var(--font-cantarell);
+  font-size: 16px;
+  font-weight: 700;
+  &:active {
+    transform: scale(0.98);
+  }
+}
+.btn--soft-blue {
+  background-color: var(--soft-blue);
+  color: #fff;
+}
+
+.btn span:first-child {
+  display: none;
+  @include from(l) {
+    display: block;
+  }
+}
+/* Buttons End*/
