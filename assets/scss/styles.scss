@@ -107,6 +107,7 @@ h3 {
     padding-inline-start: 24px;
     transform: translatex(-100%);
     background-color: var(--just-white);
+    transition: all 0.3s ease-in-out;
   }
   &__item {
     margin-block-end: 56px;
@@ -127,6 +128,7 @@ h3 {
   }
   &.active &__list {
     transform: translateX(0);
+    transition: all 0.3s ease-in-out;
   }
   @include from(m) {
     &__list {
@@ -151,6 +153,20 @@ h3 {
   position: relative;
   inline-size: 34px;
   block-size: 34px;
+  &.active .line {
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  &.active .line::before {
+    inset-block-start: 0;
+    transform: rotate(45deg);
+    transition: all 0.3s ease-in-out;
+  }
+  &.active .line::after {
+    inset-block-end: 0;
+    transform: rotate(-45deg);
+    transition: all 0.3s ease-in-out;
+  }
   @include from(m) {
     display: none;
   }
@@ -182,6 +198,69 @@ h3 {
   }
 }
 
+/* Hero */
+.hero-content {
+  margin-inline: 16px;
+  padding-block: 50px;
+  text-align: center;
+  h1 span {
+    display: block;
+    color: var(--soft-blue);
+    font-size: 34px;
+    line-height: 30px;
+  }
+  p {
+    margin-block: 40px;
+    font-size: 18px;
+    line-height: 27px;
+  }
+  @include from(m) {
+    h1 span {
+      font-size: 50px;
+      line-height: 60px;
+    }
+    p {
+      padding-inline: 200px;
+    }
+  }
+  @include from(l) {
+    padding-block: 100px;
+    h1 span {
+      font-size: 100px;
+      line-height: 93px;
+    }
+    p {
+      padding-inline: 350px;
+    }
+  }
+}
+.about {
+  display: flex;
+  flex-direction: column;
+  text-align: initial;
+  margin-block-start: 85px;
+  .box svg {
+    inline-size: 32px;
+    block-size: 32px;
+  }
+  h3 {
+    margin-block: 24px;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  @include from(m) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-inline: 180px;
+  }
+  @include from(l) {
+    padding-inline: 100px;
+    flex-wrap: nowrap;
+  }
+}
+/* Hero End*/
+
 /* Buttons */
 .btn {
   padding-inline: 24px;
@@ -204,5 +283,9 @@ h3 {
   @include from(l) {
     display: block;
   }
+}
+.logo-box {
+  display: flex;
+  gap: 16px;
 }
 /* Buttons End*/
