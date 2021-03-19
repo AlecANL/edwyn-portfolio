@@ -54,6 +54,9 @@ h1,
 h3 {
   font-family: var(--font-exo);
 }
+img {
+  max-inline-size: 100%;
+}
 .wrapper {
   max-inline-size: 1200px;
   margin: auto;
@@ -81,6 +84,7 @@ h3 {
   inset-inline-start: 0;
   inset-inline-end: 0;
   background-color: var(--soft-pink);
+  z-index: 99999;
 }
 .header-content {
   display: flex;
@@ -261,6 +265,147 @@ h3 {
 }
 /* Hero End*/
 
+/*Projects */
+.projects {
+  background-color: var(--just-white);
+}
+.projects-content {
+  margin-inline: 16px;
+  padding-block: 40px;
+  h2 {
+    text-align: center;
+    color: var(--soft-blue);
+    font-size: 32px;
+  }
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-block-start: 24px;
+    margin-block-end: 64px;
+  }
+  ul li {
+    padding-block: 12px;
+    padding-inline: 24px;
+  }
+  ul li a {
+    font-weight: 700;
+  }
+  ul li:active {
+    background-color: var(--soft-pink);
+  }
+}
+.project {
+  margin-inline-end: 15px;
+  margin-block-end: 96px;
+  &__image {
+    position: relative;
+    inset-block-start: 50px;
+    inset-inline-start: 16px;
+    z-index: 20;
+  }
+  &__description {
+    position: relative;
+    z-index: 10;
+  }
+}
+.description-content {
+  // display: inline-block;
+  padding-inline: 24px;
+  padding-block: 64px;
+  background-color: var(--soft-pink);
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    background-color: var(--soft-blue);
+    inset-block-start: 16px;
+    inset-block-end: 0;
+    inset-inline-start: 16px;
+    inset-inline-end: 0;
+    z-index: -999;
+  }
+  h3 {
+    text-transform: uppercase;
+    color: var(--soft-blue);
+    font-size: 32px;
+    box-sizing: border-box;
+    margin-block: 0;
+  }
+  p {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 500;
+  }
+  .buttons .btn {
+    inline-size: 100%;
+    margin-block-end: 16px;
+  }
+}
+/*Projects End*/
+
+/* Testimonials */
+.testimonials {
+  background-color: var(--just-white);
+}
+.testimonials-content {
+  margin-inline: 16px;
+  padding-block: 16px;
+  h2 {
+    margin: 0;
+    text-align: center;
+    color: var(--soft-blue);
+    font-size: 32px;
+    margin-block-end: 40px;
+  }
+  .image {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    z-index: 20;
+  }
+}
+.card-testimonial {
+  position: relative;
+  padding-block: 40px;
+  padding-inline-start: 28px;
+  margin-inline-end: 16px;
+  &__content {
+    padding-block: 64px;
+    padding-inline: 24px;
+    background-color: var(--soft-pink);
+  }
+  &__content h3 {
+    margin-block-start: 0;
+    margin-block-end: 16px;
+    font-size: 32px;
+  }
+  &__content p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  &__content::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 16px;
+    inset-inline-start: 16px;
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    background-color: var(--soft-blue);
+    z-index: -99;
+  }
+}
+.content {
+  position: relative;
+  z-index: 10;
+}
+/* Testimonials End */
+
 /* Buttons */
 .btn {
   padding-inline: 24px;
@@ -276,6 +421,11 @@ h3 {
 .btn--soft-blue {
   background-color: var(--soft-blue);
   color: #fff;
+}
+.btn--initial {
+  border: 1px solid var(--soft-blue);
+  background-color: transparent;
+  color: var(--soft-blue);
 }
 
 .btn span:first-child {
