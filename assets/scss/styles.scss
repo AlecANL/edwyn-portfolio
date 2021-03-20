@@ -270,7 +270,7 @@ img {
     }
   }
 
-  @include from(l) {
+  @include from(x) {
     grid-template-columns: repeat(3, 351px);
     justify-content: center;
     gap: 24px;
@@ -534,6 +534,7 @@ form {
   }
   @include from(l) {
     padding-block-start: 150px;
+    padding-inline: 0;
     h2 {
       font-size: 100px;
       line-height: 93px;
@@ -546,6 +547,9 @@ form {
   padding-block: 40px;
   padding-inline-start: 28px;
   margin-inline-end: 16px;
+  .image {
+    inline-size: 20%;
+  }
   &__content {
     padding-block: 64px;
     padding-inline: 24px;
@@ -555,6 +559,7 @@ form {
     margin-block-start: 0;
     margin-block-end: 16px;
     font-size: 32px;
+    text-transform: capitalize;
   }
   &__content p {
     margin: 0;
@@ -580,8 +585,12 @@ form {
   }
 }
 .testimonials-cards {
+  display: grid;
   @include from(l) {
-    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @include from(x) {
     grid-template-columns: repeat(2, 522px);
     column-gap: 96px;
     row-gap: 40px;
@@ -652,10 +661,21 @@ form {
   .project__description .description-content::before {
     background-color: var(--soft-pink);
   }
-
   @include from(l) {
-    margin-inline: 0;
+    align-self: flex-end;
     position: relative;
+    .project__image {
+      // position: absolute;
+      position: relative;
+      inline-size: 30%;
+      // inset-block-start: -150px;
+      inset-block-start: 50px;
+      inset-inline-start: 470px;
+    }
+  }
+
+  @include from(x) {
+    margin-inline: 0;
     align-self: flex-end;
     .project__image {
       position: absolute;
@@ -677,11 +697,15 @@ form {
 }
 .l-side {
   @include from(l) {
+    .project__image {
+      inline-size: 30%;
+    }
+  }
+  @include from(x) {
     margin-inline: 0;
     position: relative;
     .project__image {
       position: absolute;
-      inline-size: 30%;
       inset-block-start: -100px;
       inset-inline-start: -170px;
     }
@@ -691,13 +715,24 @@ form {
   }
 }
 .bg-soft-blue {
-  @include from(l) {
-    .card-testimonial__content {
-      background-color: var(--soft-blue);
-      color: var(--just-white);
-      &::before {
-        background-color: var(--soft-pink);
-      }
+  .card-testimonial__content {
+    background-color: var(--soft-blue);
+    color: var(--just-white);
+    &::before {
+      background-color: var(--soft-pink);
     }
+  }
+  @include from(x) {
+  }
+}
+.card-testimonial:nth-child(3) {
+  @include from(l) {
+    grid-column: 2 / 3;
+  }
+}
+.card-testimonial:nth-child(4) {
+  @include from(l) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
   }
 }

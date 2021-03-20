@@ -260,7 +260,7 @@ img {
     grid-column: span 2;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1366px) {
   .about {
     grid-template-columns: repeat(3, 351px);
     justify-content: center;
@@ -540,6 +540,7 @@ form .form-group textarea::placeholder {
 @media screen and (min-width: 1024px) {
   .testimonials-content {
     padding-block-start: 150px;
+    padding-inline: 0;
   }
   .testimonials-content h2 {
     font-size: 100px;
@@ -554,6 +555,9 @@ form .form-group textarea::placeholder {
   padding-inline-start: 28px;
   margin-inline-end: 16px;
 }
+.card-testimonial .image {
+  inline-size: 20%;
+}
 .card-testimonial__content {
   padding-block: 64px;
   padding-inline: 24px;
@@ -563,6 +567,7 @@ form .form-group textarea::placeholder {
   margin-block-start: 0;
   margin-block-end: 16px;
   font-size: 32px;
+  text-transform: capitalize;
 }
 .card-testimonial__content p {
   margin: 0;
@@ -586,9 +591,17 @@ form .form-group textarea::placeholder {
   }
 }
 
+.testimonials-cards {
+  display: grid;
+}
 @media screen and (min-width: 1024px) {
   .testimonials-cards {
-    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+@media screen and (min-width: 1366px) {
+  .testimonials-cards {
     grid-template-columns: repeat(2, 522px);
     column-gap: 96px;
     row-gap: 40px;
@@ -670,8 +683,19 @@ form .form-group textarea::placeholder {
 }
 @media screen and (min-width: 1024px) {
   .r-side {
-    margin-inline: 0;
+    align-self: flex-end;
     position: relative;
+  }
+  .r-side .project__image {
+    position: relative;
+    inline-size: 30%;
+    inset-block-start: 50px;
+    inset-inline-start: 470px;
+  }
+}
+@media screen and (min-width: 1366px) {
+  .r-side {
+    margin-inline: 0;
     align-self: flex-end;
   }
   .r-side .project__image {
@@ -692,13 +716,17 @@ form .form-group textarea::placeholder {
 }
 
 @media screen and (min-width: 1024px) {
+  .l-side .project__image {
+    inline-size: 30%;
+  }
+}
+@media screen and (min-width: 1366px) {
   .l-side {
     margin-inline: 0;
     position: relative;
   }
   .l-side .project__image {
     position: absolute;
-    inline-size: 30%;
     inset-block-start: -100px;
     inset-inline-start: -170px;
   }
@@ -707,13 +735,23 @@ form .form-group textarea::placeholder {
   }
 }
 
+.bg-soft-blue .card-testimonial__content {
+  background-color: var(--soft-blue);
+  color: var(--just-white);
+}
+.bg-soft-blue .card-testimonial__content::before {
+  background-color: var(--soft-pink);
+}
 @media screen and (min-width: 1024px) {
-  .bg-soft-blue .card-testimonial__content {
-    background-color: var(--soft-blue);
-    color: var(--just-white);
+  .card-testimonial:nth-child(3) {
+    grid-column: 2/3;
   }
-  .bg-soft-blue .card-testimonial__content::before {
-    background-color: var(--soft-pink);
+}
+
+@media screen and (min-width: 1024px) {
+  .card-testimonial:nth-child(4) {
+    grid-column: 1/2;
+    grid-row: 2/3;
   }
 }
 
