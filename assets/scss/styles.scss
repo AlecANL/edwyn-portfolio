@@ -68,7 +68,7 @@ img {
   margin: auto;
 }
 .overlay {
-  position: absolute;
+  position: fixed;
   inline-size: 100%;
   inset-block-start: 0;
   inset-block-end: 0;
@@ -76,6 +76,7 @@ img {
   inset-inline-end: 0;
   display: none;
   background-color: hsla(0, 0%, 0%, 0.376);
+  z-index: 1000;
   &.active {
     display: block;
   }
@@ -443,11 +444,26 @@ form {
 /* Contact End*/
 
 /* Footer */
+.shadow-blur {
+  position: absolute;
+  inline-size: 200px;
+  block-size: 200px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(246, 62, 182, 0.5) 0%,
+    rgba(191, 53, 142, 0) 100%
+  );
+  inset-block-end: 0;
+  inset-inline-start: 50%;
+  transform: translate(-50%);
+}
 .footer {
+  position: relative;
   background-color: var(--soft-blue);
   color: var(--just-white);
 }
 .footer-content {
+  position: relative;
   display: flex;
   flex-direction: column;
   margin-inline: 16px;
@@ -504,6 +520,9 @@ form {
   @include from(l) {
     .about-contact p span {
       display: inline-block;
+    }
+    .about-contact svg {
+      margin-block-start: 0;
     }
   }
 }
